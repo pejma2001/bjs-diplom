@@ -2,13 +2,11 @@
 const userForm = new UserForm();
 
 userForm.loginFormCallback = ({login, password}) =>
-    ApiConnector.login({login, password}, function(response){
-        this.loginFormCallback(this.getData(this.loginForm));
-    });
-    if(ApiConnector.login() === true){
+    ApiConnector.login({login, password}, fn = (response) => console.log(response));
+    if(response === true){
         location.reload();
     }else{
-        alert("Error!");
+        alert(response);
     }
 
 
